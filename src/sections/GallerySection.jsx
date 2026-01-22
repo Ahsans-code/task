@@ -7,6 +7,7 @@ import { ArrowLeft, ArrowRight, ChevronRight } from "lucide-react";
 // Import Swiper core styles
 import "swiper/css";
 import PopupWrapper from "@/components/PopupWrapper";
+import AnimatedText from "@/components/AnimatedText";
 
 // const images = Array(5).fill(0).map((_, i) => (`gallery${i + 1}.png`));
 const images = [
@@ -68,7 +69,7 @@ export default function GallerySection() {
 
 
             <h2 className="text-[#2B234F] text-center text-6xl md:text-8xl font-black uppercase mb-3 tracking-tight" style={{ fontFamily: 'var(--font-heading)' }}>
-                Our Gallery
+                <AnimatedText text={"Our Gallery"} />
             </h2>
 
             <button className="bg-[#1D1B36] text-white px-8 py-3 rounded-full flex items-center gap-3 text-xs font-black uppercase mb-16 tracking-widest shadow-xl">

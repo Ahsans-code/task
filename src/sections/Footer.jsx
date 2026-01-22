@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
+import AnimatedText from '@/components/AnimatedText';
 
 const Footer = () => {
     const [mounted, setMounted] = useState(false);
@@ -52,7 +53,7 @@ const Footer = () => {
 
                     {/* Column 1: Services */}
                     <div className="flex flex-col items-start">
-                        <h3 className="text-2xl lg:text-3xl font-black text-black mb-6 uppercase tracking-tighter">Services</h3>
+                        <AnimatedText text={"SERVICES"} className="text-2xl lg:text-3xl font-black text-black mb-6 uppercase tracking-tighter" />
                         <ul className="space-y-2">
                             {["2D Animation", "3D Animation", "Gaming Trailer", "Gaming", "Product Animation", "Storyboard Animation", "Logo Animation"].map((item, i) => (
                                 <li key={i} className="flex items-center gap-2 group cursor-pointer">
@@ -70,7 +71,7 @@ const Footer = () => {
 
                     {/* Column 2: Contact */}
                     <div>
-                        <h3 className="text-2xl lg:text-3xl font-black text-black mb-6 uppercase tracking-tighter">Contact</h3>
+                        <AnimatedText text={"CONTACT"} className="text-2xl lg:text-3xl font-black text-black mb-6 uppercase tracking-tighter" />
                         <ul className="space-y-2">
                             {["(113)-456-7890", "(878)-789-7890", "INFO@EXAMPLE.COM", "INFO@DUMMY.COM"].map((info, i) => (
                                 <li key={i} className="flex items-center gap-2">
@@ -85,7 +86,7 @@ const Footer = () => {
 
                     {/* Column 3: Locations */}
                     <div className="space-y-8">
-                        <h3 className="text-2xl lg:text-3xl font-black text-black mb-6 uppercase tracking-tighter">Locations</h3>
+                        <AnimatedText text={"LOCATIONS"} className="text-2xl lg:text-3xl font-black text-black mb-6 uppercase tracking-tighter" />
 
                         {[
                             { title: "Karachi Office :", desc: "Business Center, Office #202 2nd, Shahrah-e-Faisal Rd, Block-6 PECHS, Karachi" },

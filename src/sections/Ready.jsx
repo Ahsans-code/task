@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { motion } from 'framer-motion'
+import AnimatedText from '@/components/AnimatedText'
 
 const Ready = () => {
     // Animation variants
@@ -67,7 +68,9 @@ const Ready = () => {
                             loading='lazy' className='w-70 ' src="sun.png" alt="Sun image" />
                         <div className="absolute text-center select-none">
                             <h2 className="text-black font-black text-xl md:text-3xl leading-tight uppercase">
-                                Are <br /> You <br /> Ready!
+                                <AnimatedText text={"Are"} /><br />
+                                <AnimatedText text={"you"} /><br />
+                                <AnimatedText text={"Ready!"} />
                             </h2>
                         </div>
                     </div>
