@@ -27,3 +27,8 @@ body{
   --color-fourth:#0066FF;
 
 }
+@media (max-width: 640px) {
+  .project-slider .slick-slide {
+    width: 100vw !important; /* Forces each slide to be full width on mobile */
+  }
+}

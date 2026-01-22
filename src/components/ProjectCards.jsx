@@ -9,6 +9,7 @@ import CustomCursor from "./CustomCursor"
 // Accept the sliderRef prop
 export default function ProjectCards() {
     const [activeIndex, setActiveIndex] = useState(0);
+    const [slidesToShow, setSlidesToShow] = useState(4);
     const [mounted, setMounted] = useState(false);
 
     // FIX: Only render the slider after the component has mounted on the client
@@ -25,11 +26,24 @@ export default function ProjectCards() {
         { text: 'character design', img: 'project2.png' },
     ];
 
+    useEffect(() => {
+        setMounted(true);
+        const handleResize = () => {
+            if (window.innerWidth < 640) setSlidesToShow(1);
+            else if (window.innerWidth < 1024) setSlidesToShow(2);
+            else setSlidesToShow(4);
+        };
+
+        handleResize(); // Run on mount
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     const settings = {
         dots: false,
         infinite: true,
         speed: 500,
-        slidesToShow: 4,
+        slidesToShow: slidesToShow,
         slidesToScroll: 1,
         draggable: true,
         arrows: false, // We use the custom buttons in the parent
