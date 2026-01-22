@@ -6,6 +6,7 @@ import { ArrowLeft, ArrowRight, ChevronRight } from "lucide-react";
 
 // Import Swiper core styles
 import "swiper/css";
+import PopupWrapper from "@/components/PopupWrapper";
 
 // const images = Array(5).fill(0).map((_, i) => (`gallery${i + 1}.png`));
 const images = [
@@ -77,7 +78,10 @@ export default function GallerySection() {
 
             <div className="sticky  top-0 h-screen w-full flex flex-col items-center justify-center overflow-hidden">
                 <img src="curvedArrow.png" alt="" className="absolute top-10 left-10 w-28 h-28 o" />
-                <img src="sun.png" alt="" className=" absolute -bottom-14 left-0 md:left-20 w-48 h-48 " />
+                <PopupWrapper>
+
+                    <img src="sun.png" alt="" className=" absolute -bottom-14 left-0 md:left-20 w-48 h-48 " />
+                </PopupWrapper>
 
                 <img src="ellipse.png" className="absolute -bottom-20 md:bottom-[-150px] right-[-80px] w-70 md:w-95 rotate-19 "
 

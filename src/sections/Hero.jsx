@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Mail, Phone, ChevronRight, ArrowLeft, ArrowRight, Menu } from 'lucide-react';
 import AnimatedButton from '@/components/AnimatedButton';
 import Projects from './Projects';
+import AnimatedText from '@/components/AnimatedText';
 
 const Hero = () => {
     // Animation Variants
@@ -51,9 +52,10 @@ const Hero = () => {
                 <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-10" style={{ fontFamily: "var(--font-my)" }}>
                     <motion.div initial="hidden" animate="visible" variants={staggerContainer} className="lg:w-1/2 z-20">
                         <motion.h2 variants={fadeInUp} className="text-white text-4xl md:text-5xl font-black leading-tight ">
-                            ALL <br />
-                            <span className="text-5xl md:text-7xl block">ANIMATION</span>
-                            PROJECTS ACCEPTED
+                            <AnimatedText text={"ALL"} />  <br />
+                            <AnimatedText text={"ANIMATION"} className="text-3xl md:text-6xl xl:text-7xl block" />
+                            <AnimatedText text={"PROJECTS ACCEPTED"} className={"max-md:text-3xl lg:text-4xl xl:text-5xl"} />
+
                         </motion.h2>
 
 
