@@ -10,6 +10,7 @@ import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 import InfiniteSlider from '@/components/InfiniteSlider'
 import AnimatedButton from '@/components/AnimatedButton'
+import AnimatedText from '@/components/AnimatedText'
 
 const projects = [
     { name: "PROJECT NAME", img: "gallery2.png" },
@@ -71,7 +72,8 @@ export default function GamingProjects() {
                 {/* --- HEADER ROW --- */}
                 <div className="flex justify-between items-center mb-12">
                     <h2 className="text-white text-3xl md:text-5xl  uppercase tracking-tight " style={{ fontFamily: "var(--font-my)" }}>
-                        Gaming Project
+                        <AnimatedText text={"Gaming Project"} />
+
                     </h2>
 
                     {/* Navigation Arrows */}

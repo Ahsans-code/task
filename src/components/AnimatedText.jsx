@@ -3,14 +3,13 @@
 import { motion } from "framer-motion"
 
 const AnimatedText = ({ text, className }) => {
-    // 1. Container Variant: This controls the DELAY between children
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: {
             opacity: 1,
             transition: {
-                staggerChildren: 0.05, // 0.05s delay between each letter
-                delayChildren: 0.2,    // Wait 0.2s before starting the first letter
+                staggerChildren: 0.05,
+                delayChildren: 0.2,
             }
         }
     };
@@ -31,24 +30,34 @@ const AnimatedText = ({ text, className }) => {
         }
     };
 
+    // 1. Split the text into words first
+    const words = text.split(" ");
+
     return (
-        // 2. We wrap the letters in a motion parent to trigger the stagger
         <motion.span
             variants={containerVariants}
             initial="hidden"
-            whileInView="visible" // Animates when it enters the screen
+            whileInView="visible"
             viewport={{ once: true }}
             className={`inline-block ${className}`}
         >
-            {text.split("").map((char, index) => (
-                <motion.span
-                    key={index}
-                    variants={letterVariants}
-                    className="inline-block"
-                    style={{ whiteSpace: char === " " ? "pre" : "normal" }}
-                >
-                    {char}
-                </motion.span>
+            {words.map((word, wordIndex) => (
+                // 2. Wrap each word in a span that prevents line breaks inside the word
+                <span key={wordIndex} className="inline-block whitespace-nowrap">
+                    {word.split("").map((char, charIndex) => (
+                        <motion.span
+                            key={charIndex}
+                            variants={letterVariants}
+                            className="inline-block"
+                        >
+                            {char}
+                        </motion.span>
+                    ))}
+                    {/* 3. Add a space after each word except the last one */}
+                    {wordIndex !== words.length - 1 && (
+                        <span className="inline-block">&nbsp;</span>
+                    )}
+                </span>
             ))}
         </motion.span>
     )

@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowRight, Play } from 'lucide-react'
 import React, { useRef } from 'react'
 import Slider from 'react-slick'
 import { motion } from "framer-motion"
+import AnimatedText from '@/components/AnimatedText'
 export default function Products() {
     const sliderRef = useRef(null);
 
@@ -39,7 +40,8 @@ export default function Products() {
                 {/* --- HEADER ROW --- */}
                 <div className="flex justify-between items-center mb-12">
                     <h2 className="text-white text-3xl md:text-5xl  uppercase tracking-tight " style={{ fontFamily: "var(--font-my)" }}>
-                        Product Animation
+                        <AnimatedText text={"Product Animation"} />
+
                     </h2>
 
                     {/* Navigation Arrows */}
