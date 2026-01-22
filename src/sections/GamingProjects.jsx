@@ -1,5 +1,5 @@
 "use client"
-import React, { useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Slider from "react-slick"
 import { motion } from 'framer-motion'
 import { ArrowLeft, ArrowRight, ChevronRight } from 'lucide-react'
@@ -22,7 +22,12 @@ const projects = [
 
 export default function GamingProjects() {
     const sliderRef = useRef(null);
+    const [mounted, setMounted] = useState(false);
 
+    // FIX: Only render the slider after the component has mounted on the client
+    useEffect(() => {
+        setMounted(true);
+    }, []);
     const settings = {
         dots: false,
         infinite: true,
@@ -32,6 +37,7 @@ export default function GamingProjects() {
         draggable: true,
         arrows: false,
         swipeToSlide: true,
+        mobileFirst: true,
         responsive: [
             { breakpoint: 1280, settings: { slidesToShow: 3 } },
             { breakpoint: 1024, settings: { slidesToShow: 2 } },
@@ -44,7 +50,8 @@ export default function GamingProjects() {
         { node: <h1 className='text-[#44E197]'>KAMSOFT .</h1>, title: "Next.js", },
         { node: <h1 className='text-[#44E197]'>KAMSOFT .</h1>, title: "Next.js", },
     ];
-
+    // If not mounted, show a placeholder or nothing to avoid the "4 slides" glitch
+    if (!mounted) return <div className="h-110 w-full bg-transparent" />;
     return (
         <section className="   pt-100 md:pt-130   relative min-h-screen flex flex-col justify-center bg-contain bg-top bg-no-repeat " >
             <img src="cloudTopBg.png" alt="" className='absolute bottom-0 left-0 right-0 top-60' />

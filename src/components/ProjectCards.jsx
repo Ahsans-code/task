@@ -1,6 +1,6 @@
 "use client"
 import { motion } from "framer-motion"
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Slider from "react-slick"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
@@ -9,6 +9,12 @@ import CustomCursor from "./CustomCursor"
 // Accept the sliderRef prop
 export default function ProjectCards() {
     const [activeIndex, setActiveIndex] = useState(0);
+    const [mounted, setMounted] = useState(false);
+
+    // FIX: Only render the slider after the component has mounted on the client
+    useEffect(() => {
+        setMounted(true);
+    }, []);
     const sliderRef = useRef()
     const cards = [
         { text: '2d animation', img: 'project1.png' },
@@ -28,6 +34,7 @@ export default function ProjectCards() {
         draggable: true,
         arrows: false, // We use the custom buttons in the parent
         swipeToSlide: true,
+        mobileFirst: true,
         beforeChange: (current, next) => setActiveIndex(next),
         responsive: [
             { breakpoint: 1024, settings: { slidesToShow: 3 } },
@@ -35,7 +42,8 @@ export default function ProjectCards() {
             { breakpoint: 600, settings: { slidesToShow: 1 } }
         ]
     };
-
+    // If not mounted, show a placeholder or nothing to avoid the "4 slides" glitch
+    if (!mounted) return <div className="h-110 w-full bg-transparent" />;
     return (
         <div className="translate-y-1/2 absolute bottom-12 left-0 right-0 z-50">
 
