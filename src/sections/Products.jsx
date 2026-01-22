@@ -2,27 +2,41 @@
 import AnimatedButton from '@/components/AnimatedButton'
 import CustomCursor from '@/components/CustomCursor'
 import { ArrowLeft, ArrowRight, Play } from 'lucide-react'
-import React, { useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Slider from 'react-slick'
 import { motion } from "framer-motion"
 import AnimatedText from '@/components/AnimatedText'
 export default function Products() {
     const sliderRef = useRef(null);
+    const [slidesToShow, setSlidesToShow] = useState(3);
+    const [mounted, setMounted] = useState(false);
 
+    // FIX: Only render the slider after the component has mounted on the client
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
+    useEffect(() => {
+        setMounted(true);
+        const handleResize = () => {
+            if (window.innerWidth < 640) setSlidesToShow(1);
+            else if (window.innerWidth < 1024) setSlidesToShow(2);
+            else setSlidesToShow(4);
+        };
+
+        handleResize(); // Run on mount
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
     const settings = {
         dots: false,
         infinite: true,
         speed: 500,
-        slidesToShow: 3,
+        slidesToShow: slidesToShow,
         slidesToScroll: 1,
         draggable: true,
         arrows: false,
         swipeToSlide: true,
-        responsive: [
-            { breakpoint: 1280, settings: { slidesToShow: 3 } },
-            { breakpoint: 1024, settings: { slidesToShow: 2 } },
-            { breakpoint: 640, settings: { slidesToShow: 1 } }
-        ]
     };
     const projects = [
         { name: "PROJECT NAME", img: "product1.gif" },
@@ -32,6 +46,8 @@ export default function Products() {
         { name: "PROJECT NAME", img: "product2.gif" },
         { name: "PROJECT NAME", img: "product3.gif" },
     ];
+    // If not mounted, show a placeholder or nothing to avoid the "4 slides" glitch
+    if (!mounted) return <div className="h-110 w-full bg-transparent" />;
     return (
         <section className='bg-primary'>
             <CustomCursor text="DRAG" />

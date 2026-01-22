@@ -50,11 +50,7 @@ export default function ProjectCards() {
         swipeToSlide: true,
         mobileFirst: true,
         beforeChange: (current, next) => setActiveIndex(next),
-        responsive: [
-            { breakpoint: 1024, settings: { slidesToShow: 3 } },
-            { breakpoint: 768, settings: { slidesToShow: 2 } },
-            { breakpoint: 600, settings: { slidesToShow: 1 } }
-        ]
+
     };
     // If not mounted, show a placeholder or nothing to avoid the "4 slides" glitch
     if (!mounted) return <div className="h-110 w-full bg-transparent" />;

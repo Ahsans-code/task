@@ -23,7 +23,21 @@ const projects = [
 export default function GamingProjects() {
     const sliderRef = useRef(null);
     const [mounted, setMounted] = useState(false);
+    const [slidesToShow, setSlidesToShow] = useState(4);
 
+    useEffect(() => {
+        setMounted(true);
+        const handleResize = () => {
+            if (window.innerWidth < 640) setSlidesToShow(1);
+            else if (window.innerWidth < 1024) setSlidesToShow(2);
+            else if (window.innerWidth < 1280) setSlidesToShow(3);
+            else setSlidesToShow(4);
+        };
+
+        handleResize(); // Run on mount
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
     // FIX: Only render the slider after the component has mounted on the client
     useEffect(() => {
         setMounted(true);
@@ -32,17 +46,12 @@ export default function GamingProjects() {
         dots: false,
         infinite: true,
         speed: 500,
-        slidesToShow: 4,
+        slidesToShow: slidesToShow,
         slidesToScroll: 1,
         draggable: true,
         arrows: false,
         swipeToSlide: true,
         mobileFirst: true,
-        responsive: [
-            { breakpoint: 1280, settings: { slidesToShow: 3 } },
-            { breakpoint: 1024, settings: { slidesToShow: 2 } },
-            { breakpoint: 640, settings: { slidesToShow: 1 } }
-        ]
     };
     const titles = [
         { node: <h1 className='text-[#44E197]'>KAMSOFT .</h1>, title: "React", },
