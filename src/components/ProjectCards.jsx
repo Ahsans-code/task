@@ -64,7 +64,7 @@ export default function ProjectCards() {
                     {cards.map((card, idx) => (
                         <div key={idx} className="px-2">
                             <motion.div
-                                className="relative h-110 rounded-2xl overflow-hidden shadow-lg cursor-grab active:cursor-grabbing"
+                                className="relative h-110 rounded-2xl overflow-hidden  cursor-grab active:cursor-grabbing"
                             >
                                 <div className="absolute bg-gradient-to-t from-black via-transparent to-transparent inset-0 z-10 opacity-80"></div>
                                 <img

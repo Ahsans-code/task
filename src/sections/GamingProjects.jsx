@@ -115,7 +115,7 @@ export default function GamingProjects() {
                         {projects.map((project, idx) => (
                             <div key={idx} className="px-3">
                                 <motion.div
-                                    className="relative h-[420px] w-full rounded-3xl overflow-hidden shadow-2xl group cursor-grab active:cursor-grabbing "
+                                    className="relative h-[420px] w-full rounded-3xl overflow-hidden  group cursor-grab active:cursor-grabbing "
                                 >
                                     {/* Image */}
                                     <img
