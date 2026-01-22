@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+
+.oswald{
+  font-family: "Oswald", sans-serif;
+}
+.jost{
+   font-family: "Jost", sans-serif;
+}
+body{
+   font-family: "Oswald", sans-serif;
+}
+.drag {
+  cursor: none !important;
+}
+
+/* Ensure children also don't show a pointer */
+.drag * {
+  cursor: none !important;
+}
+@theme{
+  --color-primary:#FF0050;
+  --color-secondary:#281E3C;
+  --color-third:#FFB800;
+  --color-dark:#000000;
+  --color-fourth:#0066FF;
+
+}
