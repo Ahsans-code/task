@@ -1,4 +1,5 @@
 import ProjectCards from "@/components/ProjectCards";
+import SmoothScroll from "@/components/SmoothScroll";
 import Contact from "@/sections/Contact";
 import Footer from "@/sections/Footer";
 import GallerySection from "@/sections/GallerySection";
@@ -15,6 +16,7 @@ import Image from "next/image";
 export default function Home() {
   return (
     <div className="" style={{ fontFamily: "var(--font-my)" }}>
+      <SmoothScroll />
       <div className="relative " >
 
         <Hero />
